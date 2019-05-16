@@ -1,4 +1,5 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/065d7614ef61435ba2cfa73b693303d1)](https://www.codacy.com/app/jramirez36/06-app-agenda-jramirez36?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=POO-2019-2K/06-app-agenda-jramirez36&amp;utm_campaign=Badge_Grade)
+git://github.com/POO-2019-2K/06-app-agenda-jramirez36.git
 # Ejercicio 6 La Agenda
 
 ## Tiempo para realizar la actividad
