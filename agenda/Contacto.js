@@ -8,7 +8,8 @@ export default class Contactos {
         this._Nombre= Contacto.Nombre.toUpperCase();
         this._Correo = Contacto.Correo;
         this._Numero = Contacto.Numero;
-        this._Cumple = Contacto.Cumple;
+        //se hace para prevenir que se mande la fecha 
+        this._Cumple = new Date(Contacto.Cumple);
         this._Descripcion = Contacto.Descripcion;
         //se crea this._meses para que los meses aparezcan ala hora de imprimir
         this._Meses = [
@@ -73,7 +74,6 @@ export default class Contactos {
         //se usa para tener un espejo de lo que se guarde en agenda
         let listaDeContactos = JSON.parse(localStorage.getItem("Almacen"));
         listaDeContactos.forEach((Contacto, index) => {
-            Contacto.Cumple = new Date(Contacto.Cumple);
             //paquete de informacion para el localStorage
             let objContactos = {
                 Nombre: Contacto.Nombre,
