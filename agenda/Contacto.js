@@ -26,7 +26,7 @@ export default class Contactos {
         "Diciembre"
         ];
         //se guarda la informacion en el localStorage
-        this._GuardarEnHistorial(Contacto);
+        this._GuardarEnHistorial();
     }
     //funcion para tener informacion en 2 digitos para su uso en meses y dias
     _OptenerNumeroEn2Digitos(numero){
@@ -68,18 +68,23 @@ export default class Contactos {
     return Buscador;
     }
     //funcion para guardar informacion en el localStorage
-    _GuardarEnHistorial(Contacto)
+    _GuardarEnHistorial()
     {
-        //paquete de informacion para el localStorage
-        let objContactos = {
-            Nombre: Contacto.Nombre,
-            Correo: Contacto.Correo,
-            Numero: Contacto.Numero,
-            Cumple: Contacto.Cumple,
-            Descripcion: Contacto.Descripcion
-    };
-    //se sube la informacion en nuestra variable contactos 
-    this._Contactos.push(objContactos);
+        //se usa para tener un espejo de lo que se guarde en agenda
+        let listaDeContactos = JSON.parse(localStorage.getItem("Almacen"));
+        listaDeContactos.forEach((Contacto, index) => {
+            Contacto.Cumple = new Date(Contacto.Cumple);
+            //paquete de informacion para el localStorage
+            let objContactos = {
+                Nombre: Contacto.Nombre,
+                Correo: Contacto.Correo,
+                Numero: Contacto.Numero,
+                Cumple: Contacto.Cumple,
+                Descripcion: Contacto.Descripcion
+                            };
+            //se sube la informacion en nuestra variable contactos 
+            this._Contactos.push(objContactos);
+        })
     //se guarda la informacion en un localStorage con el nombre Almacen
     localStorage.setItem("Almacen", JSON.stringify(this._Contactos));
     }
@@ -95,6 +100,10 @@ export default class Contactos {
     get Numero() 
     {
         return this._Numero;
+    }
+    get Cumple() 
+    {
+        return this._Cumple;
     }
     get Descripcion() 
     {

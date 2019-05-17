@@ -6,6 +6,8 @@ export default class Agenda {
     constructor(tablaAgenda, tablaNumeroContactos) {
     this._tablaAgenda = tablaAgenda;
     this._tablaNumeroContactos = tablaNumeroContactos;
+    //variable array para contener nuestras variables antes de guardar en localStorage
+    this._Contactos = [];
     //el iniciador sirve para revisar el localStorage
     this._iniciadorDeTablas();
 }
@@ -16,6 +18,7 @@ export default class Agenda {
     //localStorage.removeItem("Almacen")
     // se guarda la informacion en un formato let para poder ser comparado y utulizado
     let listaDeContactos = JSON.parse(localStorage.getItem("Almacen"));
+    console.log(listaDeContactos)
     //se usa el if para de estar vacio el localStorage no se llegue a imprimir nada
     if (listaDeContactos === null) {
     return;
@@ -47,6 +50,16 @@ export default class Agenda {
     celdaCumple.innerHTML = Contacto._OptenerCumpleEnFormatoDatoCadena();
     celdaEdad.innerHTML = Contacto._OptenerEdad();
     celdaDescripcion.innerHTML = Contacto.Descripcion;
+    //se guarda la informacion que se acaba de imprimir para hacer un espejo con contacto.js y no se reinicie el array
+    let objContactos = {
+        Nombre: Contacto.Nombre,
+        Correo: Contacto.Correo,
+        Numero: Contacto.Numero,
+        Cumple: Contacto.Cumple,
+        Descripcion: Contacto.Descripcion
+                        };
+       //se sube la informacion en nuestra variable contactos la cual esta haciendo espejo con la pagina Contacto.js
+    this._Contactos.push(objContactos);
     }
     //funcion para comprobar que el contacto no esta agregado
     _AgregarContacto(Contacto) 
@@ -65,6 +78,7 @@ export default class Agenda {
     }
     //en caso de pasar la prueba se imprime en _AgregarAtabla
     this._AgregarATabla(Contacto);
-    Contacto._GuardarEnHistorial(Contacto);
+    //se guarda la informacion en un localStorage con el nombre Almacen para terminar el espejo con Contacto.js
+    localStorage.setItem("Almacen", JSON.stringify(this._Contactos));
     }
 }
