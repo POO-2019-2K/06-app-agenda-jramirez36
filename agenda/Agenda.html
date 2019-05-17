@@ -14,6 +14,7 @@
   </head>
   <body>
     <div class="jumbotron">
+      <!-- Titulos -->
       <h1>Agenda</h1>
       <p>Registro de Contactos</p>
     </div>
@@ -24,11 +25,11 @@
           <div class="row">
             <form id="form" class="col-10 needs-validation" novalidate>
               <div class="form-group">
-                <label for="name">Nombre</label>
+                <label for="nombre">Nombre</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="name"
+                  id="nombre"
                   placeholder="Jose De Jesus"
                   required
                 />
@@ -36,11 +37,11 @@
                 <div class="invalid-feedback">Este campo es obligatorio</div>
               </div>
               <div class="form-group">
-                <label for="email">Correo Electronico</label>
+                <label for="correo">Correo Electronico</label>
                 <input
                   type="email"
                   class="form-control"
-                  id="email"
+                  id="correo"
                   placeholder="jramirez36@ucol.mx"
                   required
                 />
@@ -80,9 +81,9 @@
               </button>
             </form>
           </div>
-          <!-- control de contactos -->
+          <!-- Control de contactos -->
           <div class="row my-3">
-            <table id="Numero" class="table ml-2">
+            <table id="NumeroContactos" class="table ml-2">
               <tbody>
                 <tr>
                   <td>Número de contactos:</td>
@@ -92,15 +93,17 @@
             </table>
           </div>
         </div>
-        <!-- Tabla -->
+        <!-- Tabla de informacion general -->
         <div class="col-md-8">
-          <table id="Contactos" class="table">
-            <thead>
+          <table id="Agenda" class="table">
+            <!-- columna -->
+            <thead> 
               <tr>
                 <th>Nombre</th>
                 <th>Correo Electronico</th>
                 <th>Numero Telefonico</th>
                 <th>Fecha de Nacimiento</th>
+                <th>Edad</th>
                 <th>descripcion</th>
                 <th></th>
                 <th></th>
@@ -110,10 +113,9 @@
           </table>
         </div>
       </div>
-      <!-- Row -->
     </div>
-    <!-- Container -->
-
+    <!-- Envio al Main -->
+    <script src="./Main.js" type="module"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
