@@ -3,7 +3,8 @@
 import Contactos from "./Contacto.js";
 import Agenda  from "./Agenda.js";
 class Main {
-constructor() {
+constructor() 
+{
     //guardado de tabla Agenda y NumeroContactos para su uso en la pagina Agenda.js
     let TablasAgenda = new Agenda( document.querySelector("#Agenda"), document.querySelector("#NumeroContactos"));
     //funcion para el boton Agregar
@@ -36,9 +37,40 @@ constructor() {
         //aqui se agregan contactos 
         TablasAgenda._AgregarContacto(Contacto);
     }
+    else
+    {
+        Swal.fire({
+            type: "error" ,
+            title: "falta alguna informacion importante",
+            text: "no se a llenado un cuadro de informacion"
+            })
+    }
     form.classList.add("was-validated");
     });
-            } 
+    
+    var select = document.getElementById("Tipo");
+    select.addEventListener("change", () => {
+    var Tipo = select.value;
+        if(Tipo == "Nombre")
+        {
+            Tipo = 1;
+        }
+        else if(Tipo == "Edad")
+        {
+            Tipo = 2;
+        }
+        else
+        {
+            Swal.fire({
+                type: "error" ,
+                title: "No selecciono en que orden se ordenara la lista",
+                text: "No selecciono en que orden se ordenara la lista por lo cual no se puede continuar"
+                })
+        }
+        //se invoca la funcion ordenar
+            TablasAgenda._Ordenar(Tipo);
+        });
+} 
 }
 //se da inicio al Main
 new Main();
