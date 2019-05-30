@@ -12,7 +12,6 @@ export default class Agenda {
     {
     //localStorage.removeItem("Almacen")
     let lContactos = JSON.parse(localStorage.getItem("Almacen"));
-    console.log(lContactos)
     if (lContactos === null) {
     return;
     }
